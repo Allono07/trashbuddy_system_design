@@ -695,7 +695,7 @@ export const SimulationDashboard = () => {
             <Activity size={24} />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-800 dark:text-white">Trash Buddy System</h1>
+            <h1 className="text-xl font-bold text-gray-800 dark:text-white">Trash Buddy System Design</h1>
             <p className="text-xs text-gray-500 dark:text-gray-400">Real-time Event Stream Simulation</p>
           </div>
         </div>

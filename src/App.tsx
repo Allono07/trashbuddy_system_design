@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100">
       <header className="bg-white shadow-sm p-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold text-gray-800">Trash Buddy Event Simulation</h1>
+        <h1 className="text-xl font-bold text-gray-800">Trash Buddy System Design</h1>
         <div>
           <SignedOut>
             <SignInButton mode="modal" />
