@@ -4,9 +4,9 @@ import { SimulationDashboard } from './components/SimulationDashboard';
 function App() {
   return (
     <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow-sm p-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold text-gray-800">Trash Buddy System Design</h1>
-        <div>
+      <header className="bg-white shadow-sm p-4 flex justify-between items-center sticky top-0 z-50">
+        <h1 className="text-lg md:text-xl font-bold text-gray-800 truncate mr-2">Trash Buddy System Design</h1>
+        <div className="flex-shrink-0">
           <SignedOut>
             <SignInButton mode="modal" />
           </SignedOut>

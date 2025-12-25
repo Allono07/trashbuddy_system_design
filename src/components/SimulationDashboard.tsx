@@ -683,61 +683,56 @@ export const SimulationDashboard = () => {
   return (
     <div className="h-screen w-full flex flex-col bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Header */}
-      <div className="px-6 py-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center shadow-sm z-10">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg text-blue-600 dark:text-blue-400">
+      <div className="px-4 py-3 md:px-6 md:py-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex flex-col md:flex-row justify-between items-start md:items-center shadow-sm z-10 gap-3 md:gap-0">
+        <div className="flex items-center gap-3 w-full md:w-auto">
+          <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg text-blue-600 dark:text-blue-400 flex-shrink-0">
             <Activity size={24} />
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-gray-800 dark:text-white">Trash Buddy System Design</h1>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Real-time Event Stream Simulation</p>
+          <div className="min-w-0">
+            <h1 className="text-lg md:text-xl font-bold text-gray-800 dark:text-white truncate">Trash Buddy System Design</h1>
+            <p className="text-xs text-gray-500 dark:text-gray-400 truncate">Real-time Event Stream Simulation</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4 w-full md:w-auto justify-between md:justify-end overflow-x-auto no-scrollbar">
           {/* Controls */}
-          <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
+          <div className="flex items-center gap-1 md:gap-2 bg-gray-100 dark:bg-gray-700 p-1 rounded-lg flex-shrink-0">
             <button 
               onClick={() => setIsPaused(!isPaused)}
-              className={`p-2 rounded-md transition-all ${isPaused ? 'bg-white dark:bg-gray-600 shadow text-red-500' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
+              className={`p-1.5 md:p-2 rounded-md transition-all ${isPaused ? 'bg-white dark:bg-gray-600 shadow text-red-500' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'}`}
             >
-              {isPaused ? <Play size={18} /> : <Pause size={18} />}
+              {isPaused ? <Play size={16} /> : <Pause size={16} />}
             </button>
             <div className="h-4 w-[1px] bg-gray-300 dark:bg-gray-600 mx-1" />
-            <button 
-              onClick={() => setSpeed(0.1)}
-              className={`px-2 py-1 text-xs font-bold rounded ${speed === 0.1 ? 'bg-white dark:bg-gray-600 shadow text-blue-600' : 'text-gray-500'}`}
-            >0.1x</button>
-            <button 
-              onClick={() => setSpeed(0.5)}
-              className={`px-2 py-1 text-xs font-bold rounded ${speed === 0.5 ? 'bg-white dark:bg-gray-600 shadow text-blue-600' : 'text-gray-500'}`}
-            >0.5x</button>
-            <button 
-              onClick={() => setSpeed(1)}
-              className={`px-2 py-1 text-xs font-bold rounded ${speed === 1 ? 'bg-white dark:bg-gray-600 shadow text-blue-600' : 'text-gray-500'}`}
-            >1x</button>
-            <button 
-              onClick={() => setSpeed(2)}
-              className={`px-2 py-1 text-xs font-bold rounded ${speed === 2 ? 'bg-white dark:bg-gray-600 shadow text-blue-600' : 'text-gray-500'}`}
-            >2x</button>
+            {[0.1, 0.5, 1, 2].map((s) => (
+              <button 
+                key={s}
+                onClick={() => setSpeed(s)}
+                className={`px-2 py-1 text-[10px] md:text-xs font-bold rounded ${speed === s ? 'bg-white dark:bg-gray-600 shadow text-blue-600' : 'text-gray-500'}`}
+              >
+                {s}x
+              </button>
+            ))}
           </div>
 
-          {/* Theme Toggle */}
-          <button 
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-          >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            {/* Theme Toggle */}
+            <button 
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
+            >
+              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
 
-          {/* Log Toggle */}
-          <button 
-            onClick={() => setIsLogOpen(!isLogOpen)}
-            className={`p-2 rounded-md transition-all ${isLogOpen ? 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
-            title="Toggle Event Log"
-          >
-            <PanelRight size={20} />
-          </button>
+            {/* Log Toggle */}
+            <button 
+              onClick={() => setIsLogOpen(!isLogOpen)}
+              className={`p-2 rounded-md transition-all ${isLogOpen ? 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+              title="Toggle Event Log"
+            >
+              <PanelRight size={20} />
+            </button>
+          </div>
         </div>
       </div>
       
@@ -766,7 +761,7 @@ export const SimulationDashboard = () => {
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: 320, opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
-              className="bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700 flex flex-col shadow-xl z-10 overflow-hidden"
+              className="bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700 flex flex-col shadow-xl z-20 overflow-hidden absolute md:relative right-0 h-full max-w-full"
             >
               <div className="p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 min-w-[320px]">
                 <h2 className="font-bold text-gray-700 dark:text-gray-200 flex items-center gap-2">
