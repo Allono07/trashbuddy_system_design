@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import ReactFlow, { 
   Background, 
   Controls, 
@@ -7,9 +7,7 @@ import ReactFlow, {
   useNodesState, 
   useEdgesState,
   MarkerType,
-  Position,
   BaseEdge,
-  getBezierPath,
   getStraightPath,
   EdgeProps
 } from 'reactflow';
@@ -26,7 +24,6 @@ import {
   Play,
   Pause,
   Users,
-  ArrowRight,
   PanelRight
 } from 'lucide-react';
 
@@ -317,8 +314,6 @@ const CustomEdge = ({
   sourceY,
   targetX,
   targetY,
-  sourcePosition,
-  targetPosition,
   style = {},
   markerEnd,
 }: EdgeProps) => {
@@ -562,7 +557,7 @@ const initialEdges: Edge[] = [
 
 export const SimulationDashboard = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [edges, , onEdgesChange] = useEdgesState(initialEdges);
   const [events, setEvents] = useState<any[]>([]);
   
   // Persistent Theme State
@@ -625,7 +620,6 @@ export const SimulationDashboard = () => {
 
     const interval = setInterval(() => {
       // 1. Rider sends location
-      const eventId = Date.now().toString();
       
       updateNodeStats('producer', 'sent');
       updateNodeStats('stream-loc', 'queued');
