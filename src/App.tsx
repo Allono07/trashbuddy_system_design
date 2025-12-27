@@ -23,7 +23,7 @@ function App() {
         <SignedOut>
           <div className="flex flex-col items-center justify-center h-[80vh]">
             <h2 className="text-2xl font-semibold mb-4">Access Restricted</h2>
-            <p className="text-gray-600 mb-6">Please sign in to access the simulation dashboard.</p>
+            <p className="text-gray-600 mb-6">Please sign in to access System Design dashboard.</p>
             <div className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
               <SignInButton mode="modal" />
             </div>
